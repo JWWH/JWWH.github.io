@@ -26,7 +26,8 @@
     <content><![CDATA[<h1 id="数组的分配和访问"><a href="#数组的分配和访问" class="headerlink" title="数组的分配和访问"></a>数组的分配和访问</h1><p>数组是存放在连续内存空间上的相同类型数据的集合。<br>数组可以方便的通过下标索引的方式获取到下标下对应的数据。</p>
 <h2 id="1、数组元素在存储空间的存放和访问"><a href="#1、数组元素在存储空间的存放和访问" class="headerlink" title="1、数组元素在存储空间的存放和访问"></a>1、数组元素在存储空间的存放和访问</h2><p>在程序中使用数组，必须遵循定义在前，使用在后的原则。一维数组定义的一般形式如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">存储类型 数据类型 数组名[元素个数];</span><br></pre></td></tr></table></figure>
-<p>其中，存储类型可以缺省。例如，定义一个具有4个元素的静态存储型<code>short</code> 数据类型数<br>组A，可以写成<code>statice short A[4];</code>。这4个数组元素为A[0]、A[1]、A[2]和A[3],它们<br>连续存放在静态数据存储区中，每个数组元素都为<code>short</code> 型数据，故占用2个字节，数组A共<br>占用8个字节，数组首地址就是第一个元素A[0]的地址，因而通常用&amp;A[0] 表示，也可简单以A表示数组A的首地址，第i(0≤i≤3)个元素的地址计算公式为<code>&amp;A[0] +2*i</code>。</p>
+<p>其中，存储类型可以缺省。例如，定义一个具有4个元素的静态存储型<code>short</code> 数据类型数组<code>A</code>，可以写成<code>statice short A[4];</code>。这4个数组元素为<code>A[0]</code>、<code>A[1]</code>、<code>A[2]</code>和<code>A[3]</code>，它们连续存放在静态数据存储区中，每个数组元素都为<code>short</code> 型数据，故占用2个字节，数组<code>A</code>共占用8个字节，数组首地址就是第一个元素<code>A[0]</code>的地址，因而通常用<code>&amp;A[0]</code> 表示，也可简单以<code>A</code>表示数组<code>A</code>的首地址，第<code>i(0≤i≤3)</code>个元素的地址计算公式为<code>&amp;A[0] +2*i</code>。<br>假定数组<code>A</code>的首地址存放在<code>EDX</code>中，<code>i</code>存放在<code>ECX</code>中，现需要将<code>A[i]</code>取到<code>AX</code>中，则可用以下汇编指令来实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">movw (%edx, %ecx, 2), %ax</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>算法</category>
